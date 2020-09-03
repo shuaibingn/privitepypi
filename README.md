@@ -6,17 +6,43 @@
 
 该项目就是针对于这种情况，在上传和下载时都需要输入密码
 
-## 使用
-### 生成账号密码
 
-- 按照提示输入账号密码
+## 配置
+
+### 生成账号密码
 ```shell script
 # 安装依赖
 $ pip install -r requirements.txt
 # 生成密码
-# 默认为admin admin
-$ htpasswd -sc ./auth/.htpasswd <your usernmae>
+# 默认为admin admin,按照提示完成账号密码的设置
+$ htpasswd -sc ./auth/.htpasswd admin
 ```
+
+### 配置上传时账号密码
+```shell script
+$ vim ~/.pypirc
+
+[distutils]
+index-servers: internal
+
+[internal]
+repository: http://localhost:8080
+username: admin
+password: admin
+```
+
+### 配置安装时账号密码
+```shell script
+$ vim .pip/pip.conf
+
+[global]
+extra-index-url = http://admin:admin@localhost:8080/simple/
+
+[install]
+trusted-host = localhost:8080
+```
+
+## 使用
 
 ### 编译
 
@@ -36,19 +62,6 @@ $ ./run_docker.sh
 ## setup命令
 `setup`是本项目中包含的命令，用来快速生成`setup.py`文件
 
-### 配置上传时账号密码
-```shell script
-$ vim ~/.pypirc
-
-[distutils]
-index-servers: internal
-
-[internal]
-repository: <your private pypi address>
-username: <your username>
-password: <your password>
-```
-
 ### 上传setup命令包
 本项目中包含了快速生成`setup.py`的方法，运行如下命令上传你的第一个私有包
 ```shell script
@@ -59,12 +72,11 @@ $ python setup.py bdist_wheel --verbose
 $ twine upload dist/*
 ```
 
-
 ### 安装setup命令
 
 - 安装setup命令
 ```shell script
-$ pip install -i <your private pypi address>/simple setup
+$ pip install setup
 ```
 
 ## 构建私有包
@@ -78,17 +90,17 @@ $ setup <you project name>
 - 执行命令
 ```shell script
 # 打包本项目下的setup命令包
-$ python setup.py bdist_wheel --verbose
+$ python setup.py bdist_wheel
 
 # 上传setup命令包
-$ twine upload dist/*
+$ twine upload ./dist/* --verbose
 ```
 
 ### 下载
 
 - 执行命令后，按照提示输入账号密码
 ```shell script
-$ pip install -i <your private pypi address>/simple <your package name>
+$ pip install <your package name>
 ```
 
 ## 问题
