@@ -1,1 +1,1 @@
-pypi-server -p 8080 -P ./auth/.htpasswd ./packages
+pypi-server -p 8080 -P ./auth/.htpasswd -a update,download ./packages
