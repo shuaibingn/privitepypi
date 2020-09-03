@@ -93,5 +93,5 @@ $ pip install -i <your private pypi address>/simple <your package name>
 
 ## 问题
 
-- 上传之后重新编译镜像，会导致之前的包消失吗？
+- 上传之后重新编译镜像，会导致之前的包消失吗？<br>
 A: 不会，如果不出意外，你将会在你宿主电脑`~/.package/`下找到你上传的私有包
