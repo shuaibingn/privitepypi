@@ -1,0 +1,1 @@
+docker build -t private/pypiserver -f Dockerfile .

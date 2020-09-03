@@ -1,0 +1,1 @@
+docker run -d --rm -p 8080:8080 -v ~/.packages:/deploy/app/privatepypi/packages private/pypiserver
