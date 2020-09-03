@@ -9,7 +9,7 @@
 
 ## 配置
 
-### 生成账号密码
+#### 生成账号密码
 ```shell script
 # 安装依赖
 $ pip install -r requirements.txt
@@ -18,7 +18,7 @@ $ pip install -r requirements.txt
 $ htpasswd -sc ./auth/.htpasswd admin
 ```
 
-### 配置上传时账号密码
+#### 配置上传时账号密码
 ```shell script
 $ vim ~/.pypirc
 
@@ -31,7 +31,7 @@ username: admin
 password: admin
 ```
 
-### 配置安装时账号密码
+#### 配置安装时账号密码
 ```shell script
 $ vim .pip/pip.conf
 
@@ -44,8 +44,7 @@ trusted-host = localhost:8080
 
 ## 使用
 
-### 编译
-
+#### 编译
 首先，确定你的电脑中安装有docker，然后运行以下脚本
 ```shell script
 # 编译docker镜像
@@ -55,14 +54,14 @@ $ ./build_docker.sh
 $ ./run_docker.sh
 ```
 
-### 访问
+#### 访问
 默认将会开启本地端口`8080`，在浏览器中输入`http://localhost:8080`
 
 
 ## setup命令
 `setup`是本项目中包含的命令，用来快速生成`setup.py`文件
 
-### 上传setup命令包
+#### 上传setup命令包
 本项目中包含了快速生成`setup.py`的方法，运行如下命令上传你的第一个私有包
 ```shell script
 # 打包本项目下的setup命令包
@@ -72,7 +71,7 @@ $ python setup.py bdist_wheel --verbose
 $ twine upload dist/*
 ```
 
-### 安装setup命令
+#### 安装setup命令
 
 - 安装setup命令
 ```shell script
@@ -85,7 +84,7 @@ $ pip install setup
 $ setup <you project name>
 ```
 
-### 上传
+#### 上传
 
 - 执行命令
 ```shell script
@@ -96,7 +95,7 @@ $ python setup.py bdist_wheel
 $ twine upload ./dist/* --verbose
 ```
 
-### 下载
+#### 下载
 
 - 执行命令后，按照提示输入账号密码
 ```shell script
