@@ -33,7 +33,7 @@ password: admin
 
 #### 配置安装时账号密码
 ```shell script
-$ vim .pip/pip.conf
+$ vim ~/.pip/pip.conf
 
 [global]
 extra-index-url = http://admin:admin@localhost:8080/simple/
